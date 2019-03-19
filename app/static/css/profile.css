@@ -1,0 +1,25 @@
+body {
+    background-color:#dae7ef;
+}
+
+label {
+    font-weight:bold;
+}
+
+textarea{
+	width:390px;
+	height:90px;
+}
+
+.form{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: yellow;
+    padding: 1em;
+    border: none;
+    border-radius: 5px;
+    border-top: 5px solid #007bff!important;
+    width: 40%;
+    margin-bottom: 2em;
+}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/profile.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+<br><h1>Add Profile</h1><br>
+<hr class="top"/>
+  <div class="form">
+    <form method="POST" action="/profile" enctype="multipart/form-data">
+      {% include 'flash_messages.html' %}
+      
+      {{ form.csrf_token }} 
+      
+      <div class="form-group col-sm-8">
+        {{ form.firstname.label  }}<br>
+        {{ form.firstname}}
+      </div>
+      <br>
+      <div class="form-group col-sm-8">
+       {{ form.lastname.label }} <br>
+       {{ form.lastname(size=20) }}
+       </div>
+      <br>
+      <div class="form-group col-sm-8">
+      {{ form.gender.label }} <br>
+      {{ form.gender (placeholder="Select Gender")  }}
+      </div>
+      <br>
+      <div class="form-group col-sm-8">
+      {{ form.email.label }} <br>
+      {{ form.email (placeholder="jdoe@example.com")  }}
+      </div>
+      <br>
+      <div class="form-group col-sm-8">
+      {{ form.location.label }} <br>
+      {{ form.location (placeholder="e.g. Kingston, Jamaica")  }}
+      </div>
+      <br>
+      <div class="form-group col-sm-8">
+      {{ form.biography.label  }} <br>
+      {{ form.biography (id="box") }}
+      </div>
+      <br>
+      <div class="form-group col-sm-8">
+      {{ form.photo.label }} <br>
+      {{ form.photo(id="browse", hidden="hidden", onchange="loadFile(event)") }}
+      <button onclick="event.preventDefault();document.getElementById('browse').click()">Browse</button>
+      <img id="output">
+      </div>
+      <br>
+      <div class="form-group col-sm-8">
+        <button type="submit" class="btn btn-success btn-md">Add Profile</button>
+      </div>
+      <br>
+    </form>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %}
