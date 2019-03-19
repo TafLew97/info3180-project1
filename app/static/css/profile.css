@@ -1,5 +1,5 @@
 body {
-    background-color:#dae7ef;
+    background-color:black;
 }
 
 label {
@@ -11,15 +11,3 @@ textarea{
 	height:90px;
 }
 
-.form{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    background-color: yellow;
-    padding: 1em;
-    border: none;
-    border-radius: 5px;
-    border-top: 5px solid #007bff!important;
-    width: 40%;
-    margin-bottom: 2em;
-}

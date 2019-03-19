@@ -5,8 +5,8 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-from app import app, db, allowed_images
-from flask import render_template, request, redirect, url_for, flash, session, abort, send_from_directory
+from app import app, db
+from flask import render_template, request, redirect, url_for, flash, session, abort
 from app.models import Profile
 from app.forms import ProfileForm
 from werkzeug.utils import secure_filename
@@ -66,7 +66,7 @@ def profiles():
 def user_profile(id):
     user = Profile.query.filter_by(id=id).first()
     images= get_uploaded_images()
-    return render_template('viewprofile.html', user=user, images=images)
+    return render_template('profile_user.html', user=user, images=images)
 
 ###
 # The functions below should be applicable to all Flask apps.
@@ -99,7 +99,7 @@ def get_uploaded_images():
     rootdir = os.getcwd()
     print (rootdir)
     img = []
-    for subdir, dirs, files in os.walk(rootdir + '/app/static/uploads'):
+    for subdir, dirs, files in os.walk(rootdir + app.config['UPLOAD_FOLDER']):
         for file in files:
             img.append(os.path.join(subdir, file).split('/')[-1])
     return img
