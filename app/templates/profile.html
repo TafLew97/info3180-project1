@@ -1,65 +1,91 @@
 {% extends "base.html" %}
 
-{% block title %}Profile{% endblock %}
+{% block title %}Project1{% endblock %}
 
 {% block css %}
 <link href="{{ url_for('static', filename='css/profile.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block main %}
-<br><h1>Add Profile</h1><br>
-<hr class="top"/>
-  <div class="form">
-    <form method="POST" action="/profile" enctype="multipart/form-data">
-      {% include 'flash_messages.html' %}
-      
-      {{ form.csrf_token }} 
-      
-      <div class="form-group col-sm-8">
-        {{ form.firstname.label  }}<br>
-        {{ form.firstname}}
-      </div>
-      <br>
-      <div class="form-group col-sm-8">
-       {{ form.lastname.label }} <br>
-       {{ form.lastname(size=20) }}
-       </div>
-      <br>
-      <div class="form-group col-sm-8">
-      {{ form.gender.label }} <br>
-      {{ form.gender (placeholder="Select Gender")  }}
-      </div>
-      <br>
-      <div class="form-group col-sm-8">
-      {{ form.email.label }} <br>
-      {{ form.email (placeholder="jdoe@example.com")  }}
-      </div>
-      <br>
-      <div class="form-group col-sm-8">
-      {{ form.location.label }} <br>
-      {{ form.location (placeholder="e.g. UWI, Mona")  }}
-      </div>
-      <br>
-      <div class="form-group col-sm-8">
-      {{ form.biography.label  }} <br>
-      {{ form.biography (id="box") }}
-      </div>
-      <br>
-      <div class="form-group col-sm-8">
-      {{ form.photo.label }} <br>
-      {{ form.photo(id="browse", hidden="hidden", onchange="loadFile(event)") }}
-      <button onclick="event.preventDefault();document.getElementById('browse').click()">Browse</button>
-      <img id="output">
-      </div>
-      <br>
-      <div class="form-group col-sm-8">
-        <button type="submit" class="btn btn-success btn-md">Add Profile</button>
-      </div>
-      <br>
-    </form>
-  </div>
-{% endblock %}
 
-{% block scripts %}
-<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+{% include 'flash_messages.html' %}
+
+    <div class='top' >
+        <h2>Add Profile</h2>
+        
+    </div>    
+    <form id="form" method="POST" enctype="multipart/form-data" action="{{ url_for('profile') }}">
+        {{ form.csrf_token }}
+        <div class="label">
+            {{ form.firstname.label }}</br>
+            
+            {% for message in form.firstname.errors %}
+                        <div class="alert alert-danger">{{message}}</div>
+                    {% endfor %}
+            
+            {{ form.firstname(class="form-control") }}
+        </div>
+        
+        <div class="label">
+            {{ form.lastname.label }}</br>
+            
+            {% for message in form.lastname.errors %}
+                        <div class="alert alert-danger">{{message}}</div>
+                    {% endfor %}
+            
+            {{ form.lastname(class="form-control") }}
+        </div>
+        
+        <div class="label ">
+            {{ form.gender.label }}</br>
+
+                  {{form.gender(class="form-control")}}
+
+            {% for message in form.gender.errors %}
+                        <div class="alert alert-danger">{{message}}</div>
+                    {% endfor %}
+
+        </div>
+        
+        <div class="label">
+            {{ form.email.label }}</br>
+            
+            {% for message in form.email.errors %}
+                        <div class="alert alert-danger">{{message}}</div>
+                    {% endfor %}
+            
+            {{ form.email(class="form-control", placeholder="jdoe@example.com") }}
+        </div>
+        <div class="label">
+            {{ form.location.label }}</br>
+            
+            {% for message in form.location.errors %}
+                        <div class="alert alert-danger">{{message}}</div>
+                    {% endfor %}
+            
+            {{ form.location(class="form-control", placeholder='e.g. Kingston, Jamaica') }}
+        </div>
+        
+        <div class="label">
+            {{ form.biography.label }}</br>
+            
+            {% for message in form.biography.errors %}
+                        <div class="alert alert-danger">{{message}}</div>
+                    {% endfor %}
+            
+            {{ form.biography(class="form-control") }}
+        </div>
+        
+        <div class="label">
+            {{ form.photo.label }}</br>
+            <label for="photo" type="file" class="browsebtn">Browse...</label>
+            {% for message in form.photo.errors %}
+                        <div class="alert alert-danger">{{message}}</div>
+                    {% endfor %}
+            
+            {{ form.photo }}
+        </div>
+        
+    <button type="submit" class="btn btn-primary">Add Profile</button>
+</form>
 {% endblock %}

@@ -1,25 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %} All Profiles {% endblock %}
+{% block title %}Project1{% endblock %}
+
 {% block css %}
 <link href="{{ url_for('static', filename='css/profiles.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block main %}
-<h1 class="page-header">Profiles</h1><br>
-{% for user in users %}
-    <div class="profile">
-        <div class="photo">
-            <img id = "profilepic" src="{{ url_for('static', filename='uploads/'+user.filename) }}"></img>
-        </div>
-        <div class="info">
-            <h3><span class="bold">{{user.firstname}} {{ user.lastname }}</span></h3><br>
-            <p><span class = "bold">Gender:</span> {{ user.gender }} </p>
-            <p><span class = "bold">Location:</span> {{ user.location }} </p>
-        </div>
-        <div class="button">
-            <a href="{{ url_for('user_profile', id= user.id ) }}"><button class="btn btn-success" style="padding:10px 40px; font-size:20px">View Profile</button></a>
-        </div>
-    </div><br>
-{% endfor %}
+
+    <h1 class="title">Profiles</h1>
+        {% for profile in profiles %}
+            <div class="row border-style center profile profiles-container">
+                <image src="{{ url_for('static', filename='uploads/'+profile.filename) }}" class="profile-pic"/>
+                    <div class="col profile-data">
+                        <span class="name">{{profile.firstname}} {{profile.lastname}}</span><br>
+                        <span><i class="fa fa-street-view"></i>{{profile.gender}}</span><br>
+                        <span><i class="fa fa-map-marker"></i>{{profile.location}}</span>
+                    </div>
+                <div class="view-profile center col bio">
+                    </br>
+                    <a class="view-btn btn-success" href="{{ url_for('userprofile',userid=profile.id) }}">View profile</a>
+                </div>
+            </div>
+        {% endfor %}
 {% endblock %}

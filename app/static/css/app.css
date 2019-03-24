@@ -1,9 +1,26 @@
 body {
     padding-top: 5rem;
+    background-color: #b3d9ff;
 }
 
 
+.form-container {
+    margin: 0 auto;
+    padding: 5px;
+    width: 45%;
+    background-color: white;
+}
 
-.navbar-nav {
-    margin-left: 17rem;
+p {
+    text-align: left;
+    font-family: "Verdana", Sans-serif;
+    color: grey;
+}
+
+h1 {
+    margin: 0 auto;
+    width: 45%;
+    margin-bottom: 1%;
+    font-weight: bold;
+    text-align: left;
 }

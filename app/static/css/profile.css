@@ -1,13 +1,44 @@
-body {
-    background-color:black;
+.top{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
 }
 
-label {
-    font-weight:bold;
+.label{
+    margin-right:50px;
+    
 }
 
-textarea{
-	width:390px;
-	height:90px;
+#form{
+    margin: auto;
+    width: 50%;
+    border: 1px solid white;
+    padding: 10px;
+    background-color: white;
+    border-radius: 1%;
+    border-top-color: #007bff;
+    border-top-width: 4px;
 }
 
+.browsebtn{
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 20%;
+    text-align: center;
+}
+
+.btn{
+    padding: 2px;
+    border:#50f442;
+    background-color: #50f442;
+    color: white;
+    
+}
+
+input[type="file"] 
+{
+    display: none;
+}
