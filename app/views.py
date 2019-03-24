@@ -47,11 +47,11 @@ def profile():
             filename   = secure_filename(photo.filename)
             photo.save(os.path.join(app.config['UPLOAD_FOLDER'],filename)) 
             
-            User=UserProfile(firstname,lastname,email,location,gender,created_on,filename,biography)
+            User=UserProfile(firstname=firstname,lastname=lastname,email=email,location=location,gender=gender,created_on=created_on,filename=filename,biography=biography)
             db.session.add(User)
             db.session.commit()
             
-            flash("User Created")
+            flash("User Created Successfully!")
             return redirect(url_for("viewprofiles"))
         else:
             flash_errors(form)
